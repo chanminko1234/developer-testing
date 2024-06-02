@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: mysql://cmk:password@mysql:3306/real_estate
+    depends_on:
+      mysql:
+        condition: service_healthy
+    entrypoint: ['/usr/src/app/wait-for-it.sh', 'mysql', '--']
+    command: sh -c "npx prisma migrate deploy && npx prisma db seed 10000 && npm run dev"
+
+  mysql:
+    image: mysql:8.3.0
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: real_estate
+      MYSQL_USER: cmk
+      MYSQL_PASSWORD: password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5

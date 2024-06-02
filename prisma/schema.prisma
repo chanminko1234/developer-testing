@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model property {
+  id             Int      @id @default(autoincrement())
+  project_name   String
+  title          String
+  price          Float
+  bedroom_count  Int
+  bathroom_count Int
+  area           Float
+  description    String   @db.LongText
+  status         Status
+  images         image[]
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now())
+
+  @@index([bedroom_count, bathroom_count], name: "idx_bed_bath_count")
+  @@index([bedroom_count, status], name: "idx_bed_status")
+  @@index([bathroom_count, status], name: "idx_bath_status")
+  @@index([status], name: "idx_status")
+}
+
+model image {
+  id          Int      @id @default(autoincrement())
+  url         String
+  property    property @relation(fields: [property_id], references: [id])
+  property_id Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+}
+
+enum Status {
+  BUY
+  SALE
+  RENT
+}

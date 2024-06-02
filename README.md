@@ -1,39 +1,58 @@
-Please fork this repository and develop a real estate property search feature using Next.js, MySQL, and GraphQL in your own repository. Include a Docker Compose configuration for Next.js and instructions to generate fake data. This test aims to assess your critical thinking and technical skills, so a complete git log showing all work done is important.
+# Real Estate Property Search Feature
 
-**User Story:**  
+This repository contains a real estate property search feature developed using Next.js, MySQL, and GraphQL. The search feature allows users to filter properties based on sale or rent, price range, number of bedrooms, and area. Additionally, the listing page displays the project name, short title, price, bedroom count, area, short description, and an image gallery that supports mouse interaction on PCs and swipe gestures on mobile devices. The project aims to achieve a Google Insight score of 95 or higher and handle a large number of fake properties to test query performance.
 
-**As a Developer**, I want to build a search feature for real estate properties, allowing users to filter properties based on sale or rent, price range, number of bedrooms, and area. The search should handle a large number of fake properties (10,000, 100,000, and 1,000,000) to test query performance. Additionally, the listing page should display the project name, short title, price, bedroom count, area, short description, and an image gallery (with 5 images) that works with mouse interaction on PCs and swipe gestures on mobile devices. The page should achieve a score of 95 or higher on Google Insight.
+## Features
 
-**Acceptance Criteria:**
+- Search properties based on sale or rent or buy, price range, number of bedrooms, and area.
+- Search autocomplete feature to assist users in quickly finding properties.
+- Listing page displaying property details including project name, title, price, bedroom count, bathroom count, description, and image gallery.
+- Image gallery supports mouse interaction on PCs and swipe gestures on mobile devices.
+- Google Insight score optimization.
+- Performance testing with a large number of fake properties.
 
-**Given** a user searches for properties,  
-**When** they select the filter type for sale or rent,  
-**Then** the search should display properties matching the selected type.  
+## Technologies Used
 
-**Given** a user searches for properties,  
-**When** they specify the price range using the filter,  
-**Then** the search should display properties within the specified price range for both sale and rent.  
+- Next.js: React framework for building server-side rendered applications.
+- MySQL: Relational database management system for storing property data.
+- GraphQL: Query language for interacting with the server.
+- Apollo Server: GraphQL server implementation.
+- Nexus: GraphQL schema definition and code-first approach library.
+- Docker Compose: Tool for defining and running multi-container Docker applications.
 
-**Given** a user searches for properties,  
-**When** they filter properties based on the number of bedrooms,  
-**Then** the search should display properties with the corresponding bedroom count.  
+## Getting Started
 
-**Given** a user searches for properties,  
-**When** they filter properties based on the area,  
-**Then** the search should display properties within the specified area range.  
+### Prerequisites
 
-**Given** a user views the listing page,  
-**When** they interact with the image gallery on a PC (using a mouse),  
-**Then** they should be able to navigate between images.  
+- Docker installed on your machine.
 
-**Given** a user views the listing page,  
-**When** they interact with the image gallery on a mobile device (using swipe gestures),  
-**Then** they should be able to navigate between images.
+### Installation
 
-**Given** the listing page,  
-**When** tested with Google Insight,  
-**Then** the page should achieve a score of 95 or higher.  
+1. **Clone the repository:**
 
-**Given** a large number of fake properties (10,000, 100,000, and 1,000,000),  
-**When** the search is performed,  
-**Then** the query performance should meet acceptable performance benchmarks.  
+    ```bash
+    git clone https://github.com/FazWaz/developer-testing.git real-estate-property-search
+    ```
+
+2. **Navigate to the project directory:**
+
+    ```bash
+    cd real-estate-property-search
+    ```
+
+3. **Start MySQL database using Docker Compose:**
+
+    ```bash
+    docker-compose up -d
+    ```
+
+4. **Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application.**
+
+### Optional
+
+5. **Seed the database with 1,000,000 fake records:**
+
+   To populate the database with a large dataset for performance testing, you can use the following command:
+
+   ```bash
+   npx prisma db seed 1000000
