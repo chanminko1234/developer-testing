@@ -31,7 +31,7 @@ This repository contains a real estate property search feature developed using N
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/FazWaz/developer-testing.git real-estate-property-search
+    git clone https://github.com/chanminko1234/developer-testing.git real-estate-property-search
     ```
 
 2. **Navigate to the project directory:**
