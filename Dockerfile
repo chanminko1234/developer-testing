@@ -18,8 +18,11 @@ COPY . .
 # Generate Prisma Client
 RUN npx prisma generate
 
+# Build the Next.js application
+RUN npm run build
+
 # Expose port
 EXPOSE 3000
 
 # Start the Next.js application
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
