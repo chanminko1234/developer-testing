@@ -7,7 +7,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
 
-const Index = () => {
+const Slider = () => {
     return (
         <div className="w-full h-full">
             <Swiper
@@ -36,4 +36,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default Slider;

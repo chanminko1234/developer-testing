@@ -16,7 +16,7 @@ interface PropertyProps {
         bathroom_count: number;
         area: number;
         description: string;
-        status: 'BUY' | 'SALE' | 'RENT';
+        status: string;
         images: { url: string }[];
     };
     formSearch?: boolean;
@@ -82,7 +82,7 @@ const Property: React.FC<PropertyProps> = ({ property, formSearch }) => {
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-zinc-700">
                             <div className="font-bold text-xl">
-                                ฿<span className="ml-2 text-sky-800">{Math.round(Number(price)).toLocaleString('en-US')}</span>
+                                ฿ <span className="ml-2 text-sky-800">{Math.round(Number(price)).toLocaleString('en-US')}</span>
                             </div>
                         </div>
                     </div>

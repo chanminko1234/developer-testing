@@ -1,6 +1,5 @@
 import {arg, intArg, nonNull, queryType, stringArg, list} from 'nexus';
 import {Status} from './Status';
-import { AutocompleteSuggestion } from './AutocompleteSuggestion'
 
 export const Query = queryType({
     definition: function (t) {
